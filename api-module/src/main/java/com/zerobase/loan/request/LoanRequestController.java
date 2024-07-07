@@ -15,7 +15,7 @@ public class LoanRequestController {
     private final LoanRequestService loanRequestService;
 
     @PostMapping("/request")
-    ResponseEntity<LoanRequestResponseDto> requestLoan(@RequestBody LoanRequestInputDto loanRequestInputDto) {
+    ResponseEntity<LoanRequestResponseDto> requestLoan(@RequestBody LoanRequestInputDto loanRequestInputDto) throws Exception {
         return ResponseEntity.ok(loanRequestService.loanRequestsMain(loanRequestInputDto));
     }
 
