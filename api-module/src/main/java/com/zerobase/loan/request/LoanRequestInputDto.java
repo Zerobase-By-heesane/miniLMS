@@ -9,10 +9,10 @@ import lombok.NoArgsConstructor;
 @Data
 public class LoanRequestInputDto {
     String userName;
-    String userIncomeAmount;
+    Long userIncomeAmount;
     String userRegistrationNumber;
 
     public UserInfoDto toUserInfoDto(String userKey){
-        return new UserInfoDto(userKey, userName, userRegistrationNumber, userIncomeAmount);
+        return new UserInfoDto(userKey, userName, userRegistrationNumber,userIncomeAmount);
     }
 }
