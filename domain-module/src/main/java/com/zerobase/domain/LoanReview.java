@@ -1,7 +1,9 @@
 package com.zerobase.domain;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
+@Getter
 @Entity
 @Table(name = "LOAN_REVIEW")
 public class LoanReview {
