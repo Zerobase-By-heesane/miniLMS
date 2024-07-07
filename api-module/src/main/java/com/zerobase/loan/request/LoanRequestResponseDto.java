@@ -1,4 +1,5 @@
 package com.zerobase.loan.request;
 
 public class LoanRequestResponseDto {
+    String userKey;
 }
