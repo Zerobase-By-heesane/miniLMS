@@ -24,6 +24,7 @@ public class LoanReviewDto {
     @AllArgsConstructor
     @NoArgsConstructor
     @Builder
+    @Getter
     public static class LoanReview{
         String userKey;
         Long userLimitAmount;

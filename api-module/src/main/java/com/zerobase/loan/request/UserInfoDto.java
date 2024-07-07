@@ -14,14 +14,14 @@ public class UserInfoDto {
     String userKey;
     String userName;
     String userRegistrationNumber;
-    String userIncomeAmount;
+    Long userIncomeAmount;
 
     public UserInfo toEntity(){
         return UserInfo.builder()
                 .userKey(userKey)
                 .userName(userName)
                 .userRegistrationNumber(userRegistrationNumber)
-                .userIncomeAmount(Long.parseLong(userIncomeAmount))
+                .userIncomeAmount(userIncomeAmount)
                 .build();
     }
 }

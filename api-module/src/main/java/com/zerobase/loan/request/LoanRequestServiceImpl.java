@@ -7,6 +7,13 @@ import com.zerobase.repository.UserInfoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+
 @RequiredArgsConstructor
 @Service
 public class LoanRequestServiceImpl implements LoanRequestService{
@@ -19,23 +26,22 @@ public class LoanRequestServiceImpl implements LoanRequestService{
 
 
     @Override
-    public LoanRequestResponseDto loanRequestsMain(LoanRequestInputDto loanRequestInputDto) {
+    public LoanRequestResponseDto loanRequestsMain(LoanRequestInputDto loanRequestInputDto) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
 
         String userKey = generateKey.generateKey();
 
+        loanRequestInputDto.userRegistrationNumber = encryptComponent.encryptString(loanRequestInputDto.userRegistrationNumber);
+
         saveUserInfo(loanRequestInputDto.toUserInfoDto(userKey));
 
-        loanRequestReview("");
+        loanRequestReview(userKey);
 
-        return null;
+        return new LoanRequestResponseDto(userKey);
     }
 
     @Override
     public UserInfo saveUserInfo(UserInfoDto userInfoDto) {
-
-        userInfoRepository.save(userInfoDto.toEntity());
-
-        return null;
+        return userInfoRepository.save(userInfoDto.toEntity());
     }
 
     @Override
