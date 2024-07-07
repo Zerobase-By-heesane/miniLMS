@@ -5,7 +5,7 @@ import com.zerobase.domain.UserInfo;
 public interface LoanRequestService {
     LoanRequestResponseDto loanRequestsMain(LoanRequestInputDto loanRequestInputDto);
 
-    UserInfo saveUserInfo(UserInfo userInfo);
+    UserInfo saveUserInfo(UserInfoDto userInfo);
 
-    void loanRequestReview(UserInfoDto userInfoDto);
+    void loanRequestReview(String userKey);
 }
