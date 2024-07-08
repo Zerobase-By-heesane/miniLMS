@@ -16,7 +16,7 @@ import java.util.Base64;
 
 @Component
 public class EncryptComponent {
-    private final String SECRETARY = "123456789012345678901234356";
+    private final String SECRETARY = "12345678901234567890123456789012";
 
     private final Base64.Encoder encoder = Base64.getEncoder();
     private final Base64.Decoder decoder = Base64.getDecoder();
