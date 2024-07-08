@@ -1,0 +1,10 @@
+bootJar.enabled = false
+
+jar.enabled = true
+
+dependencies {
+    // spring kafka
+    implementation 'org.springframework.kafka:spring-kafka'
+    //Jackson
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
+}
