@@ -20,10 +20,10 @@ public class LoanReviewServiceImpl implements LoanReviewService {
         return LoanReviewDto.LoanReviewResponseDto.builder()
                 .userKey(userKey)
                 .loanResult(toResponseDto(getLoanResult(userKey)))
-                 .build();
+                .build();
     }
 
-    @Cacheable(value = "REVIEW", key = "#userKey",cacheManager = "redisCacheManager")
+    @Cacheable(value = "REVIEW", key = "#userKey", cacheManager = "redisCacheManager")
     @Override
     public LoanReviewDto.LoanReview getLoanResult(String userKey) {
         LoanReview loanReview = loanReviewRepository.findByUserKey(userKey)

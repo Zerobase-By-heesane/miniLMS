@@ -13,5 +13,6 @@ import java.security.NoSuchAlgorithmException;
 
 public interface UserService {
     UserResponse getUserInfo(String userKey) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException, Exception;
+
     UserInformationDto createUser(UserInputDto userInputDto) throws Exception;
 }

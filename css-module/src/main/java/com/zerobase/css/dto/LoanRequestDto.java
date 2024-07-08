@@ -11,7 +11,7 @@ public class LoanRequestDto {
     @NoArgsConstructor
     @Getter
     @ToString
-    public static class RequestInputDto{
+    public static class RequestInputDto {
         String userKey;
         String userName;
         Long userIncomeAmount;

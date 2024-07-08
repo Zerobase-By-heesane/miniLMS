@@ -1,9 +1,9 @@
 package com.zerobase.product.controller;
 
 
-import com.zerobase.product.dto.ProductResponse;
 import com.zerobase.common.model.StatusResponse;
 import com.zerobase.product.dto.ProductDto;
+import com.zerobase.product.dto.ProductResponse;
 import com.zerobase.product.service.ProductService;
 import com.zerobase.product.type.OrganizationCode;
 import io.swagger.v3.oas.annotations.Operation;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/fintech/v1")
-@Tag( name ="Product", description = "상품 정보 관련 API")
+@Tag(name = "Product", description = "상품 정보 관련 API")
 public class ProductController {
 
     private final ProductService productService;
@@ -30,7 +30,7 @@ public class ProductController {
         return ResponseEntity.ok(productService.getProduct(organizationCode));
     }
 
-    @Operation(summary = "상품 정보 수신 API",description = "금융사로부터 상품 정보를 받는 API")
+    @Operation(summary = "상품 정보 수신 API", description = "금융사로부터 상품 정보를 받는 API")
     @PostMapping("/product/information")
     public ResponseEntity<StatusResponse> createProduct(@RequestBody ProductDto product) {
         return ResponseEntity.ok(productService.createProduct(product));

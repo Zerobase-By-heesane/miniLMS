@@ -10,7 +10,7 @@ public class LoanResultDto {
     @Getter
     @AllArgsConstructor
     @ToString
-    public static class ResponseDto{
+    public static class ResponseDto {
         String userKey;
         Long limitAmount;
         Double interest;

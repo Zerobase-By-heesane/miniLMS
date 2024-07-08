@@ -17,7 +17,7 @@ public class UserInfoDto {
     String userRegistrationNumber;
     Long userIncomeAmount;
 
-    public UserInfo toEntity(){
+    public UserInfo toEntity() {
         return UserInfo.builder()
                 .userKey(userKey)
                 .userName(userName)
@@ -26,7 +26,7 @@ public class UserInfoDto {
                 .build();
     }
 
-    public LoanRequestDto toLoanRequestKafkaDto(){
+    public LoanRequestDto toLoanRequestKafkaDto() {
         return new LoanRequestDto(
                 userKey,
                 userName,

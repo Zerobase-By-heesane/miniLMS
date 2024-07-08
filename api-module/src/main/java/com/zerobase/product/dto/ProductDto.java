@@ -10,14 +10,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @NoArgsConstructor
-public class ProductDto{
+public class ProductDto {
     private String organizationCode;
     private String productCode;
     private Double productMaximumInterest;
     private Double productMinimumInterest;
     private String productName;
 
-    public static ProductDto toDto(ProductInfo productInfo){
+    public static ProductDto toDto(ProductInfo productInfo) {
         return ProductDto.builder()
                 .organizationCode(productInfo.getOrganizationCode())
                 .productCode(productInfo.getProductCode())

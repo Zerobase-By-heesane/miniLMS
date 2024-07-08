@@ -2,7 +2,10 @@ package com.zerobase.loan.review;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @Getter
@@ -12,7 +15,7 @@ public class LoanReviewDto {
     @NoArgsConstructor
     @Getter
     @Builder
-    public static class LoanReviewResponseDto{
+    public static class LoanReviewResponseDto {
 
         @JsonProperty("userKey")
         String userKey;
@@ -20,11 +23,12 @@ public class LoanReviewDto {
         LoanResult loanResult;
 
     }
+
     @AllArgsConstructor
     @NoArgsConstructor
     @Getter
     @Builder
-    public static class LoanResult{
+    public static class LoanResult {
         Long userLimitAmount;
         Double userLoanInterest;
     }
@@ -33,7 +37,7 @@ public class LoanReviewDto {
     @NoArgsConstructor
     @Builder
     @Getter
-    public static class LoanReview{
+    public static class LoanReview {
         String userKey;
         Long userLimitAmount;
         Double userLoanInterest;

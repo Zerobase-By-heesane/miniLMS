@@ -1,7 +1,6 @@
 package com.zerobase.user.dto;
 
 import com.zerobase.common.type.ResponseContent;
-import com.zerobase.loan.request.UserInfoDto;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

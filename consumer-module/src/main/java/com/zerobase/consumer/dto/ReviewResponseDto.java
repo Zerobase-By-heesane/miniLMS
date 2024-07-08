@@ -15,7 +15,7 @@ public class ReviewResponseDto {
     Long limitAmount;
     Double interest;
 
-    public LoanReview toLoanReviewEntity(){
+    public LoanReview toLoanReviewEntity() {
         return LoanReview.builder()
                 .userKey(userKey)
                 .loanLimitedAmount(limitAmount)

@@ -12,7 +12,7 @@ public class LoanRequestInputDto {
     Long userIncomeAmount;
     String userRegistrationNumber;
 
-    public UserInfoDto toUserInfoDto(String userKey){
-        return new UserInfoDto(userKey, userName, userRegistrationNumber,userIncomeAmount);
+    public UserInfoDto toUserInfoDto(String userKey) {
+        return new UserInfoDto(userKey, userName, userRegistrationNumber, userIncomeAmount);
     }
 }

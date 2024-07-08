@@ -1,13 +1,9 @@
 package com.zerobase.user.controller;
 
-import com.zerobase.loan.request.LoanRequestInputDto;
-import com.zerobase.loan.request.LoanRequestResponseDto;
-import com.zerobase.loan.request.UserInfoDto;
 import com.zerobase.user.dto.UserInformationDto;
 import com.zerobase.user.dto.UserInputDto;
 import com.zerobase.user.dto.UserResponse;
 import com.zerobase.user.service.UserService;
-import io.lettuce.core.dynamic.annotation.Param;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import lombok.RequiredArgsConstructor;

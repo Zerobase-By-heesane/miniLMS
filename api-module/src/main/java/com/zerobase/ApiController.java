@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.cache.annotation.EnableCaching;
 
-@EntityScan(basePackages = {"com.zerobase.domain","com.zerobase.repository"})
+@EntityScan(basePackages = {"com.zerobase.domain", "com.zerobase.repository"})
 @SpringBootApplication
 @EnableCaching
 public class ApiController {

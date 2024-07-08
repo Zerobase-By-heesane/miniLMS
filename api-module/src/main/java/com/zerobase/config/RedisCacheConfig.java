@@ -1,6 +1,5 @@
 package com.zerobase.config;
 
-import com.fasterxml.jackson.databind.ser.std.StringSerializer;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;

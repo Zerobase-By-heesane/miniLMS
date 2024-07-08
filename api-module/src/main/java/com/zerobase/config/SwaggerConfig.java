@@ -17,7 +17,7 @@ public class SwaggerConfig {
 
     private Info apiInfo() {
         return new Info().
-                title("Fintech").
+                title("Fintech-API").
                 version("API v1.0").
                 description("API");
     }

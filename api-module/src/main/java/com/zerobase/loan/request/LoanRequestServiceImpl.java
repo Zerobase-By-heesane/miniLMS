@@ -19,13 +19,12 @@ import java.security.NoSuchAlgorithmException;
 
 @RequiredArgsConstructor
 @Service
-public class LoanRequestServiceImpl implements LoanRequestService{
+public class LoanRequestServiceImpl implements LoanRequestService {
 
     private final GenerateKey generateKey;
     private final UserInfoRepository userInfoRepository;
     private final EncryptComponent encryptComponent;
     private final LoanRequestSender loanRequestSender;
-
 
 
     @Override
