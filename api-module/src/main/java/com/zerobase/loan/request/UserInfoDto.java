@@ -1,6 +1,7 @@
 package com.zerobase.loan.request;
 
 import com.zerobase.domain.UserInfo;
+import com.zerobase.kafka.dto.LoanRequestDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,5 +24,14 @@ public class UserInfoDto {
                 .userRegistrationNumber(userRegistrationNumber)
                 .userIncomeAmount(userIncomeAmount)
                 .build();
+    }
+
+    public LoanRequestDto toLoanRequestKafkaDto(){
+        return new LoanRequestDto(
+                userKey,
+                userName,
+                userIncomeAmount,
+                userRegistrationNumber
+        );
     }
 }
