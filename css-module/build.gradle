@@ -1,19 +1,7 @@
-plugins {
-    id 'java'
-}
+bootJar.enabled = false
 
-group = 'com.zerobase'
-version = 'unspecified'
-
-repositories {
-    mavenCentral()
-}
+jar.enabled = true
 
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
-}
-
-test {
-    useJUnitPlatform()
+    implementation("org.springframework.boot:spring-boot-starter-web")
 }
