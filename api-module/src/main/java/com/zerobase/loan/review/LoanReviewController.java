@@ -28,9 +28,7 @@ public class LoanReviewController {
             @Parameter(description = "사용자 식별키")
             String userKey
     ) {
-        LoanReviewDto.LoanReviewResponseDto loanReviewResponseDto = loanReviewService.loanReviewMain(userKey);
-        log.info("loanReviewResponseDto : {}", loanReviewResponseDto);
-        return loanReviewResponseDto;
+        return loanReviewService.loanReviewMain(userKey);
 
     }
 }

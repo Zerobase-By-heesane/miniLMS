@@ -20,9 +20,6 @@ public class LoanReceiveController {
 
     @PostMapping("/request")
     public LoanResultDto.ResponseDto loanReceive(@RequestBody LoanRequestDto.RequestInputDto requestInputDto) {
-        log.info("LoanRequestDto: {}", requestInputDto.toString());
-        LoanResultDto.ResponseDto responseDto = loanReceiveService.loanReview(requestInputDto);
-        log.info("LoanResultDto: {}", responseDto.toString());
-        return responseDto;
+        return loanReceiveService.loanReview(requestInputDto);
     }
 }

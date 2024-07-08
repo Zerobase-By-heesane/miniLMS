@@ -19,7 +19,6 @@ public class LoanRequestConsumer {
 
     @KafkaListener(topics = "loan-request", groupId = "fintech")
     public void consume(String message) throws JsonProcessingException {
-        log.info("Consumed message: {}", message);
         LoanRequestDto loanRequestDto = objectMapper.readValue(message, LoanRequestDto.class);
         loanRequestService.loanRequest(loanRequestDto);
     }

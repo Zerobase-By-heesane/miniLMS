@@ -23,25 +23,17 @@ public class LoanRequestService {
     private final String CSS_URL = "http://localhost:8081/css/api/v1/request";
 
     public void loanRequest(LoanRequestDto loanRequestDto) {
-        log.info("LoanRequestDto: {}", loanRequestDto.toString());
-        ReviewResponseDto reviewResponseDto = loanRequestToCb(loanRequestDto);
-        log.info("ReviewResponseDto: {}", reviewResponseDto);
-        LoanReview loanReviewEntity = reviewResponseDto.toLoanReviewEntity();
-        log.info("LoanReviewEntity: {}", loanReviewEntity.toString());
-        saveLoanReviewData(loanReviewEntity);
+
+        saveLoanReviewData(loanRequestToCb(loanRequestDto).toLoanReviewEntity());
     }
 
     private ReviewResponseDto loanRequestToCb(LoanRequestDto loanRequestDto) {
         RestTemplate restTemplate = new RestTemplateBuilder()
-                .setConnectTimeout(Duration.ofDays(1000))
-                .setReadTimeout(Duration.ofDays(1000))
+                .setConnectTimeout(Duration.ofSeconds(1000))
+                .setReadTimeout(Duration.ofSeconds(1000))
                 .build();
-        log.info("LoanRequestDto: {}", loanRequestDto.toString());
-        ResponseEntity<ReviewResponseDto> reviewResponseDtoResponseEntity = restTemplate.postForEntity(CSS_URL, loanRequestDto, ReviewResponseDto.class);
-        log.info("ResponseEntity: {}", reviewResponseDtoResponseEntity.toString());
-        ReviewResponseDto body = reviewResponseDtoResponseEntity.getBody();
-        log.info("ReviewResponseDto: {}", body.toString());
-        return body;
+
+        return restTemplate.postForEntity(CSS_URL, loanRequestDto, ReviewResponseDto.class).getBody();
     }
 
     private void saveLoanReviewData(LoanReview loanReview) {
