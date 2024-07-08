@@ -8,6 +8,7 @@ import com.zerobase.product.type.OrganizationCode;
 import com.zerobase.common.type.ResponseContent;
 import com.zerobase.repository.ProductInfoRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,7 @@ public class ProductServiceImpl implements ProductService{
 
     private final ProductInfoRepository productInfoRepository;
 
-    @Cacheable(value = "PRODUCT", key = "#organizationCode", cacheManager = "redisCacheManager")
+    @Cacheable(value = "PRODUCT", key = "#organizationCode.orgCode", cacheManager = "redisCacheManager")
     @Override
     public ProductResponse getProduct(OrganizationCode organizationCode) {
         List<ProductInfo> allByOrganizationCode = productInfoRepository.findAllByOrganizationCode(organizationCode.getOrgCode());
@@ -35,6 +36,7 @@ public class ProductServiceImpl implements ProductService{
         return new ProductResponse(productDtos, ResponseContent.SUCCESS);
     }
 
+    @CacheEvict(value = "PRODUCT", key = "#product.getOrganizationCode()", cacheManager = "redisCacheManager")
     @Override
     public StatusResponse createProduct(ProductDto product) {
 

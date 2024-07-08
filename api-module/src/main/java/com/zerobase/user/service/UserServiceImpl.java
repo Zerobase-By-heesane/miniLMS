@@ -8,6 +8,7 @@ import com.zerobase.loan.request.UserInfoDto;
 import com.zerobase.repository.UserInfoRepository;
 import com.zerobase.user.dto.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,6 +19,7 @@ public class UserServiceImpl implements UserService {
     private final UserInfoRepository userInfoRepository;
     private final EncryptComponent encryptComponent;
 
+    @Cacheable(value = "USER", key = "#userKey", cacheManager = "redisCacheManager")
     @Override
     public UserResponse getUserInfo(String userKey) throws Exception {
 
@@ -30,6 +32,7 @@ public class UserServiceImpl implements UserService {
 
         return new UserResponse(userData, ResponseContent.SUCCESS);
     }
+
 
     @Override
     public UserInformationDto createUser(UserInputDto userInputDto) throws Exception {
