@@ -1,5 +1,6 @@
 package com.zerobase.domain;
 
+import com.zerobase.aop.Encrypt;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,9 +21,11 @@ public class UserInfo {
     @Column(name = "usr_key")
     private String userKey;
 
+    @Encrypt
     @Column(name = "usr_reg_num")
     private String userRegistrationNumber;
 
+    @Encrypt
     @Column(name = "usr_nm")
     private String userName;
 
