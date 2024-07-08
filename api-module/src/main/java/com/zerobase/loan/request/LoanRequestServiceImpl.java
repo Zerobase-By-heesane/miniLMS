@@ -1,6 +1,9 @@
 package com.zerobase.loan.request;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.zerobase.domain.UserInfo;
+import com.zerobase.kafka.enums.KafkaTopic;
+import com.zerobase.kafka.producer.LoanRequestSender;
 import com.zerobase.loan.GenerateKey;
 import com.zerobase.loan.encrypt.EncryptComponent;
 import com.zerobase.repository.UserInfoRepository;
@@ -21,20 +24,22 @@ public class LoanRequestServiceImpl implements LoanRequestService{
     private final GenerateKey generateKey;
     private final UserInfoRepository userInfoRepository;
     private final EncryptComponent encryptComponent;
-//    private final Loan
+    private final LoanRequestSender loanRequestSender;
 
 
 
     @Override
-    public LoanRequestResponseDto loanRequestsMain(LoanRequestInputDto loanRequestInputDto) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+    public LoanRequestResponseDto loanRequestsMain(LoanRequestInputDto loanRequestInputDto) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException, JsonProcessingException {
 
         String userKey = generateKey.generateKey();
 
         loanRequestInputDto.userRegistrationNumber = encryptComponent.encryptString(loanRequestInputDto.userRegistrationNumber);
 
-        saveUserInfo(loanRequestInputDto.toUserInfoDto(userKey));
+        UserInfoDto userInfoDto = loanRequestInputDto.toUserInfoDto(userKey);
 
-        loanRequestReview(userKey);
+        saveUserInfo(userInfoDto);
+
+        loanRequestReview(userInfoDto);
 
         return new LoanRequestResponseDto(userKey);
     }
@@ -45,7 +50,10 @@ public class LoanRequestServiceImpl implements LoanRequestService{
     }
 
     @Override
-    public void loanRequestReview(String userKey) {
-
+    public void loanRequestReview(UserInfoDto userInfoDto) throws JsonProcessingException {
+        loanRequestSender.sendMessage(
+                KafkaTopic.LOAN_REQUEST,
+                userInfoDto.toLoanRequestKafkaDto()
+        );
     }
 }
