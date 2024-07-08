@@ -5,4 +5,5 @@ include 'css-module'
 include 'gateway-module'
 include 'consumer-module'
 include 'kafka-module'
+include 'product-module'
 
