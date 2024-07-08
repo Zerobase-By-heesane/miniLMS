@@ -17,4 +17,7 @@ dependencies {
 
     //Slf4j
     implementation 'org.springframework.boot:spring-boot-starter-logging'
+
+    //Redis
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 }

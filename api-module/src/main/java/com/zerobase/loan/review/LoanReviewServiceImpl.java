@@ -5,6 +5,7 @@ import com.zerobase.exception.CustomErrorCode;
 import com.zerobase.exception.CustomException;
 import com.zerobase.repository.LoanReviewRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,6 +23,7 @@ public class LoanReviewServiceImpl implements LoanReviewService {
                  .build();
     }
 
+    @Cacheable(value = "REVIEW", key = "#userKey",cacheManager = "redisCacheManager")
     @Override
     public LoanReviewDto.LoanReview getLoanResult(String userKey) {
         LoanReview loanReview = loanReviewRepository.findByUserKey(userKey)
