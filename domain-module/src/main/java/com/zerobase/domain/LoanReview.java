@@ -1,10 +1,14 @@
 package com.zerobase.domain;
 
 import jakarta.persistence.*;
-import lombok.Getter;
+import lombok.*;
 
 @Getter
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@ToString
 @Table(name = "LOAN_REVIEW")
 public class LoanReview {
     @Id
